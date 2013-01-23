@@ -21,13 +21,13 @@ setup(
     packages=['gitcal'],
     long_description=read('README.txt'),
     classifiers=[
-        "Environment :: Web Environment,
+        "Environment :: Web Environment",
         "Development Status :: 3 - Alpha",
         "Framework :: Django",
         "Topic :: Office/Business :: Scheduling",
         "Topic :: Utilities",
         "License :: OSI Approved :: GNU Affero General Public License v3",
     ],
-    requires = ['vobject==0.8.1c']
+    install_requires = ['vobject==0.8.1c',]
 )
 
