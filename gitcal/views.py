@@ -41,11 +41,15 @@ def _render(repo_slug):
     repo = get_api(repo_slug)
     cal = vobject.iCalendar()
     
+    print 'looking for', repo_slug
+    print repo
+    
     for commit in repo['commits']:
         vevent = cal.add('vevent')
         vevent.add('dtstart').value = datetime.fromtimestamp(commit['commit_time'])
-    
-    return cal.prettyPrint()
+        vevent.add('summary').value = commit['message']
+        
+    return cal.serialize()
 
 def render(request, repo_slug):
     return HttpResponse(_render(repo_slug), mimetype="text/calendar")
