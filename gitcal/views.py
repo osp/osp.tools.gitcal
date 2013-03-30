@@ -47,7 +47,7 @@ def _render(repo_slug):
     for commit in repo['commits']:
         vevent = cal.add('vevent')
         vevent.add('dtstart').value = datetime.fromtimestamp(commit['commit_time'])
-        vevent.add('summary').value = commit['message']
+        vevent.add('summary').value = "%s: %s" % (commit['author'], commit['message'])
         
     return cal.serialize()
 
